@@ -4,8 +4,8 @@
 <ul>
     @foreach(var place in Model)
     {
-        <li>@Html.DisplayFor(modelLocation => place.LocationName) | @Html.ActionLink("Details", "Details", new  { id = place.LocationId}) 
-            @Html.ActionLink("Edit", "Edit", new { id = place.LocationId })
+        <li>@Html.DisplayFor(modelLocation => place.LocationName) | @Html.ActionLink("Details", "Details", new { id = place.LocationId }) 
+            @Html.ActionLink("Edit", "Edit", new { id = place.LocationId }) | @Html.ActionLink("Delete", "Delete", new { id = place.LocationId })
     <br />
 
         @Html.DisplayFor(modelLocation => place.LocationDescription)</li>

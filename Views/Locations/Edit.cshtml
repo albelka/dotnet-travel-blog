@@ -8,6 +8,9 @@
     {
         @Html.HiddenFor(model => model.LocationId)
 
+        @Html.LabelFor(model => model.LocationImage)
+        @Html.EditorFor(model => model.LocationImage)
+
         @Html.LabelFor(model => model.LocationName)
         @Html.EditorFor(model => model.LocationName)
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TravelBlog.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,6 +21,7 @@ namespace TravelBlog.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
             return View();
         }
 
@@ -30,9 +33,18 @@ namespace TravelBlog.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Details(int id)
+        {
+            var thisPerson = db.People
+                .Include(people => people.Location)
+                .FirstOrDefault(people => people.PersonId == id);
+            return View(thisPerson);
+        }
+
         public IActionResult Edit(int id)
         {
-            var thisPerson = db.People.FirstOrDefault(person => person.PersonId == id);
+            var thisPerson = db.People.FirstOrDefault(person => person.PersonId == id) ;
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "LocationName");
             return View(thisPerson);
         }
 
@@ -40,6 +52,21 @@ namespace TravelBlog.Controllers
         public IActionResult Edit(Person person)
         {
             db.Entry(person).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var thisPerson = db.People.FirstOrDefault(person => person.PersonId == id);
+            return View(thisPerson);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisPerson = db.People.FirstOrDefault(person => person.PersonId == id);
+            db.People.Remove(thisPerson);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -8,6 +8,9 @@
 {
     @Html.HiddenFor(model => model.ExperienceId)
 
+    @Html.LabelFor(model => model.ExperienceImage)
+    @Html.EditorFor(model => model.ExperienceImage)
+
     @Html.LabelFor(model => model.ExperienceName)
     @Html.EditorFor(model => model.ExperienceName)
 

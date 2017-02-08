@@ -11,6 +11,9 @@
 
         @Html.LabelFor(model => model.LocationDescription)
         @Html.TextBoxFor(model => model.LocationDescription)
+
+        @Html.LabelFor(model => model.LocationImage)
+        @Html.EditorFor(model => model.LocationImage)
         <input type="submit" value="Add new adventure" />
     }
     <p>@Html.ActionLink("Back to list", "Index")</p>

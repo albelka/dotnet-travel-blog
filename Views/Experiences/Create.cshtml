@@ -11,6 +11,9 @@
 
     @Html.LabelFor(model => model.ExperienceDescription)
     @Html.TextBoxFor(model => model.ExperienceDescription)
+
+    @Html.LabelFor(model => model.ExperienceImage)
+    @Html.TextBoxFor(model => model.ExperienceImage)
     <input type="submit" value="Add new experience" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>

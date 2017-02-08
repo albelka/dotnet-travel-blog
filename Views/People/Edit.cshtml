@@ -1,19 +1,23 @@
 ﻿@model TravelBlog.Models.Person
 
-
-<h2>Create</h2>
+<h2>Edit</h2>
 <hr />
-<h4>Add a new Person you've met</h4>
+<h4>Edit this person: @Html.DisplayFor(model => model.PersonName)</h4>
+
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.PersonId)
+
     @Html.LabelFor(model => model.PersonName)
-    @Html.TextBoxFor(model => model.PersonName)
+    @Html.EditorFor(model => model.PersonName)
 
     @Html.LabelFor(model => model.PersonDescription)
-    @Html.TextBoxFor(model => model.PersonDescription)
+    @Html.EditorFor(model => model.PersonDescription)
 
     @Html.LabelFor(model => model.PersonImage)
     @Html.EditorFor(model => model.PersonImage)
-    <input type="submit" value="Add new person" />
+
+    <input type="submit" value="Save" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>
+
