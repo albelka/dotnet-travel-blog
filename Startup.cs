@@ -25,6 +25,8 @@ namespace TravelBlog
             Configuration = builder.Build();
         }
 
+
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -36,7 +38,13 @@ namespace TravelBlog
 
         public void Configure(IApplicationBuilder app)
         {
-
+            //2
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.Run(async (context) =>
             {
