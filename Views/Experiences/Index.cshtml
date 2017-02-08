@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TravelBlog.Models.Experience>
+
+<h2>Experiences I had</h2>
+<ul>
+    @foreach (var experience in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelExperience => experience.ExperienceName) <br />
+        @Html.DisplayFor(modelExperience => experience.ExperienceDescription)
+    </li>
+    }
+</ul>
+
+<p>@Html.ActionLink("Add new experience", "Create")</p>
