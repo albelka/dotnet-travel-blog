@@ -4,7 +4,7 @@
 <ul>
     @foreach (var experience in Model)
     {
-        <li>
+        <li>In: @Html.DisplayFor(modelExperience => experience.Location.LocationName)<br />
             @Html.DisplayFor(modelExperience => experience.ExperienceName) | @Html.ActionLink("Details", "Details", new { id = experience.ExperienceId }) | @Html.ActionLink("Edit", "Edit", new { id = experience.ExperienceId }) | @Html.ActionLink("Delete", "Delete", new { id = experience.ExperienceId })<br />
         @Html.DisplayFor(modelExperience => experience.ExperienceDescription) <br />
             
