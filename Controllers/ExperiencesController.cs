@@ -29,5 +29,25 @@ namespace TravelBlog.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(int id)
+        {
+            var thisExperience = db.Experiences.FirstOrDefault(experience => experience.ExperienceId == id);
+            return View(thisExperience);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var thisExperience = db.Experiences.FirstOrDefault(experience => experience.ExperienceId == id);
+            return View(thisExperience);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Experience experience)
+        {
+            db.Entry(experience).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
